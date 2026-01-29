@@ -1,0 +1,29 @@
+<h2>Set Budget</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-form-field class="full">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option value="Food">Food</mat-option>
+      <mat-option value="Rent">Rent</mat-option>
+      <mat-option value="Travel">Travel</mat-option>
+      <mat-option value="Shopping">Shopping</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full">
+    <mat-label>Monthly Limit</mat-label>
+    <input matInput type="number" formControlName="limit" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">
+    Save Budget
+  </button>
+</form>
+
+<h3 style="margin-top: 24px">Current Budgets</h3>
+
+<p *ngFor="let b of budgets">
+  {{ b.category }} → ₹{{ b.limit }}
+</p>

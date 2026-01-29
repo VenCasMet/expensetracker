@@ -1,0 +1,19 @@
+<h2>Expenses</h2>
+
+<mat-card *ngFor="let e of expenses" style="margin-bottom: 12px">
+  <mat-card-title>
+    {{ e.title }} — ₹{{ e.amount }}
+  </mat-card-title>
+
+  <mat-card-subtitle>
+    {{ e.category }} | {{ e.type }} | {{ e.date | date }}
+  </mat-card-subtitle>
+
+  <button mat-button color="warn" (click)="delete(e.id)">
+    Delete
+  </button>
+</mat-card>
+
+<p *ngIf="expenses.length === 0">
+  No expenses added yet.
+</p>

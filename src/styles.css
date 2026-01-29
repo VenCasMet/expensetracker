@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+/* ===== DASHBOARD CHART FIX ===== */
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.chart-card {
+  padding: 16px;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 260px;   /* 👈 THIS IS THE KEY */
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

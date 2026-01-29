@@ -1,0 +1,177 @@
+<h2>Dashboard</h2>
+
+<button class="theme-toggle" (click)="toggleTheme()">
+  {{ darkMode ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+</button>
+
+
+<div [class.dark]="darkMode" class="dashboard">
+
+  <!-- ================= SUMMARY ================= -->
+  <div class="summary">
+    <mat-card class="card">
+      <h3>Total Income</h3>
+      <p>₹ {{ totalIncome }}</p>
+    </mat-card>
+
+    <mat-card class="card">
+      <h3>Total Expense</h3>
+      <p>₹ {{ totalExpense }}</p>
+    </mat-card>
+
+    <mat-card class="card">
+      <h3>Balance</h3>
+      <p [style.color]="balance < 0 ? 'red' : 'green'">
+        ₹ {{ balance }}
+      </p>
+    </mat-card>
+  </div>
+
+  <!-- ================= CHARTS ================= -->
+  <div class="charts" *ngIf="expenses.length > 0">
+    <mat-card class="chart-card">
+      <h3>Spending Breakdown</h3>
+      <div class="chart-box">
+        <canvas #pieCanvas></canvas>
+      </div>
+    </mat-card>
+
+    <mat-card class="chart-card">
+      <h3>Income vs Expense</h3>
+      <div class="chart-box">
+        <canvas #barCanvas></canvas>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- ================= EMPTY STATE ================= -->
+  <mat-card *ngIf="expenses.length === 0" class="card" style="margin-top: 24px">
+    <p style="text-align:center; opacity:0.7">
+      No data for selected month 📅
+    </p>
+  </mat-card>
+
+  <!-- ================= BUDGET ================= -->
+  <mat-card *ngIf="budgetStatus.length" class="budget-card">
+    <h3>Budget Alerts</h3>
+
+    <div *ngFor="let b of budgetStatus" class="budget-item">
+      <strong>{{ b.category }}</strong>
+      — ₹{{ b.spent }} / ₹{{ b.limit }}
+
+      <mat-progress-bar
+        mode="determinate"
+        [value]="b.percent"
+        [color]="b.exceeded ? 'warn' : b.nearLimit ? 'accent' : 'primary'">
+      </mat-progress-bar>
+
+      <div *ngIf="b.nearLimit" class="warn">⚠️ Near limit</div>
+      <div *ngIf="b.exceeded" class="danger">🚨 Budget exceeded</div>
+    </div>
+  </mat-card>
+
+</div>
+
+<style>
+/* ======================
+   THEME VARIABLES
+====================== */
+.dashboard {
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #111;
+}
+
+.dashboard.dark {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #ffffff;
+}
+
+.dashboard {
+  background: var(--bg);
+  color: var(--text);
+  padding: 16px;
+  min-height: 100vh;
+}
+
+/* ======================
+   BUTTON
+====================== */
+.theme-toggle {
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ======================
+   SUMMARY
+====================== */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  text-align: center;
+}
+
+/* ======================
+   CHARTS
+====================== */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.chart-card {
+  background: var(--card);
+}
+
+.chart-box {
+  height: 300px;
+}
+
+/* ======================
+   BUDGET
+====================== */
+.budget-card {
+  margin-top: 24px;
+  background: var(--card);
+}
+
+.budget-item {
+  margin-bottom: 12px;
+}
+
+.warn {
+  color: orange;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+}
+
+/* ======================
+   📱 MOBILE
+====================== */
+@media (max-width: 768px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-box {
+    height: 240px;
+  }
+}
+</style>
