@@ -1,59 +1,152 @@
-# ExpenseTracker
+💰 Expense Tracker – Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+🌐 Live Demo: https://friendly-eclair-c40ef2.netlify.app/
 
-## Development server
+The Expense Tracker is a responsive, frontend-focused web application built with Angular that helps users track income, expenses, and budgets with clear visual insights.
+It focuses on real-world usability, clean UI, and correct handling of browser-only APIs in production environments.
 
-To start a local development server, run:
+🧠 Project Overview
 
-```bash
-ng serve
-```
+This application allows users to manage their personal finances by recording expenses and income, categorizing spending, setting budgets, and visualizing data using charts.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The project emphasizes:
 
-## Code scaffolding
+-State management using Angular services and RxJS
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+-Correct lifecycle handling for charts and browser APIs
 
-```bash
-ng generate component component-name
-```
+-Deployment stability on Netlify
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
 
-## Building
+🚀 Features
 
-To build the project run:
+➕ Add income and expense entries
 
-```bash
-ng build
-```
+🗂 Category-based expense tracking (Food, Travel, Shopping, etc.)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+📊 Real-time dashboard summary
 
-## Running unit tests
+📈 Pie & bar chart visualizations
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+🎯 Budget setting per category
 
-```bash
-ng test
-```
+⚠️ Budget alerts at 80% and 100%
 
-## Running end-to-end tests
+🌙 Dark / Light mode toggle
 
-For end-to-end (e2e) testing, run:
+💾 Data persistence using localStorage
 
-```bash
-ng e2e
-```
+📱 Fully responsive design (mobile & desktop)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🛠️ Tech Stack
+
+-Frontend
+
+--Angular (Standalone Components)
+
+--TypeScript
+
+--HTML5 / CSS3
+
+-UI & Styling
+
+--Angular Material
+
+--Custom CSS & responsive grid layout
+
+--Dark mode using CSS variables
+
+-Charts & Visualization
+
+--Chart.js (Pie Chart & Bar Chart)
+
+-State & Data Handling
+
+--RxJS Observables
+
+--Angular Services
+
+--Browser (localStorage)
+
+-Deployment
+
+--Netlify
+
+--Git & GitHub
+
+
+
+📁 Project Structure
+
+    expense-tracker/
+    ├── src/
+    │   ├── app/
+    │   │   ├── core/
+    │   │   │   ├── models/
+    │   │   │   └── services/
+    │   │   ├── dashboard/
+    │   │   ├── expenses/
+    │   │   ├── budget/
+    │   │   └── add-expense/
+    │   └── index.html
+    ├── angular.json
+    ├── package.json
+    ├── netlify.toml
+    └── README.md
+
+
+
+⚙️ Application Workflow
+
+1️⃣ User adds income or expense entries
+
+2️⃣ Data is stored via Angular services
+
+3️⃣ Dashboard subscribes to observables
+
+4️⃣ Totals, charts, and budgets update in real time
+
+5️⃣ Alerts trigger when budgets near or exceed limits
+
+6️⃣ Theme and data persist across reloads
+
+
+🧩 Problems Faced & Solutions
+
+Issue	Solution
+
+Charts not rendering on refresh----------Used ngAfterViewInit and conditional rendering
+
+localStorage undefined error-------------Wrapped access using isPlatformBrowser
+
+Netlify 404 after deploy-----------------Corrected publish directory
+
+Angular runtime plugin failure-----------Fixed build output path and config
+
+
+
+📚 Key Learnings
+
+Angular lifecycle hooks in real projects
+
+Managing charts efficiently in Angular
+
+Safe handling of browser-only APIs
+
+Debugging Netlify deployment issues
+
+Writing modular, maintainable frontend code
+
+
+
+▶️ Run the Project Locally
+
+    npm install
+    ng serve
+
+
+Then open:
+👉 http://localhost:4200
