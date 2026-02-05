@@ -118,13 +118,10 @@ The project emphasizes:
 
 Issue	Solution
 
-Charts not rendering on refresh----------Used ngAfterViewInit and conditional rendering
-
-localStorage undefined error-------------Wrapped access using isPlatformBrowser
-
-Netlify 404 after deploy-----------------Corrected publish directory
-
-Angular runtime plugin failure-----------Fixed build output path and config
+    Charts not rendering on refresh----------Used ngAfterViewInit and conditional rendering
+    localStorage undefined error-------------Wrapped access using isPlatformBrowser
+    Netlify 404 after deploy-----------------Corrected publish directory
+    Angular runtime plugin failure-----------Fixed build output path and config
 
 
 
